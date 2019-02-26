@@ -48,16 +48,13 @@ class LeftRightClassifier():
         image = self.transform(image)
         image = image.view(1, *image.size()).to(self.device)
         # Result
-        result = {'prob_left': 0, 'prob_right': 0, 'prediction': 'left', 'need_check': True}
+        result = {'prob_left': 0, 'prob_right': 0}
         labels = ['left', 'right']
 
         # Predict image
         with torch.no_grad():
             output = self.model(image)
-            ps = torch.exp(output)
+            ps = output
             result['prob_left'] = float(ps[0][0].item())
             result['prob_right'] = float(ps[0][1].item())
-            _, top_class = ps.topk(1, dim=1)
-            result['prediction'] = labels[int(top_class[0])]
-        result['need_check'] = abs(result['prob_left'] - result['prob_right']) <= 0.5
         return result

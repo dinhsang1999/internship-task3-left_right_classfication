@@ -2,11 +2,7 @@
 
 ## Setup environment
 Run this script to create a virtual environment and install dependency libraries
-```bash
-chmod +x ./setup
-./setup.sh
-```
-Or just install libraries:
+
 ```bash
 pip3 install -r requirements.txt
 ```
@@ -31,7 +27,5 @@ The `result` is a dictionary with the structure:
 {
   'prob_left': 0.007223138585686684, // Probability of image is of left eye
   'prob_right': 0.9927768707275391, // Probability of image is of right eye
-  'prediction': 'right', // 'left' or 'right', prediction label of image
-  'need_check': False // True or False, if True, the image need to check manually
 }
 ```
