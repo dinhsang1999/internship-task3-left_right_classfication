@@ -27,5 +27,6 @@ The `result` is a dictionary with the structure:
 {
   'prob_left': 0.007223138585686684, // Probability of image is of left eye
   'prob_right': 0.9927768707275391, // Probability of image is of right eye
+  'label': 'right' // Label from classifier: 'left' or 'right' or 'undetermined'
 }
 ```
