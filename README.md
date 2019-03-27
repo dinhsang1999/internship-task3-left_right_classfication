@@ -57,11 +57,10 @@ Open browser and call API on port 5000
 ```bash
 ./docker-build.sh
 ```
-3. Run docker on port 5001
+3. Run docker on port 5001. You can pass any port you want to run
 ```bash
 ./docker-run.sh 5001
 ```
-You can pass any port you want to run
 4. Open host browser on port 5001
 
 ### GPU docker
@@ -71,14 +70,12 @@ You can pass any port you want to run
 ```bash
 ./docker-gpu-build.sh
 ```
-4. Test nvidia docker
+4. Test nvidia docker. At this step, you will see your GPU appear on the console
 ```bash
 docker run --runtime=nvidia --rm nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04 nvidia-smi
 ```
-At this step, you will see your GPU appear on the console
-5. Run docker on port 5002
+5. Run docker on port 5002. You can pass any port you want to run
 ```bash
 ./docker-gpu-run.sh 5002
 ```
-You can pass any port you want to run
-4. Open host browser on port 5002
+6. Open host browser on port 5002
