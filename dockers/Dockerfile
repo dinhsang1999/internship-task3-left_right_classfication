@@ -8,4 +8,4 @@ COPY download_model.py /download_model.py
 RUN pip install -r requirements.txt
 RUN python download_model.py
 
-CMD python app.py
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app"]

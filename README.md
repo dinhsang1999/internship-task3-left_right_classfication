@@ -37,9 +37,9 @@ The `result` is a dictionary with the structure:
 ## Flask API
 Run this command
 ```bash
-python app.py
+gunicorn -b 0.0.0.0:8000 app
 ```
-Open browser and call API on port 5000
+Open browser and call API on port 8000
 - METHOD: POST
 - URL: http://localhost:5000/predict
 - DATA:
@@ -51,11 +51,13 @@ Open browser and call API on port 5000
 
 ## Docker Installation
 
-### non-GPU docker
+### Build and run
+
+#### non-GPU docker
 1. Install docker, run docker
 2. Build docker
 ```bash
-./docker-build.sh
+./docker-build.sh <version>
 ```
 3. Run docker on port 5001. You can pass any port you want to run
 ```bash
@@ -63,12 +65,12 @@ Open browser and call API on port 5000
 ```
 4. Open host browser on port 5001
 
-### GPU docker
+#### GPU docker
 1. Install docker, run docker
 2. Config nvidia-docker https://github.com/NVIDIA/nvidia-docker
 3. Build docker
 ```bash
-./docker-gpu-build.sh
+./docker-gpu-build.sh <version>
 ```
 4. Test nvidia docker. At this step, you will see your GPU appear on the console
 ```bash
@@ -79,3 +81,13 @@ docker run --runtime=nvidia --rm nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04 nvid
 ./docker-gpu-run.sh 5002
 ```
 6. Open host browser on port 5002
+
+### Push Docker images
+
+1. Install Cloud SDK https://cloud.google.com/sdk/docs/
+2. Config docker with Google Cloud https://cloud.google.com/container-registry/docs/advanced-authentication
+3. Push docker
+```bash
+./docker-push.sh
+./docker-gpu-push.sh
+```

@@ -10,7 +10,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 from .model import LeftRightResnet18
 
 model_urls = {
-    "resnet18": "https://storage.googleapis.com/a2ds/lr_classifier/fundus_lr_classifier_resnet18-c18392c2.pth"
+    "resnet18": "https://storage.googleapis.com/a2ds-models/lr_classifier/fundus_lr_classifier_resnet18-c18392c2.pth"
 }
 
 class LeftRightClassifier():
