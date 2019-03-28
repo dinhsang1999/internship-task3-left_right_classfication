@@ -37,9 +37,9 @@ The `result` is a dictionary with the structure:
 ## Flask API
 Run this command
 ```bash
-python app.py
+gunicorn -b 0.0.0.0:8000 app
 ```
-Open browser and call API on port 5000
+Open browser and call API on port 8000
 - METHOD: POST
 - URL: http://localhost:5000/predict
 - DATA:
