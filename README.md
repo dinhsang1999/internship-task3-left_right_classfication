@@ -51,7 +51,9 @@ Open browser and call API on port 5000
 
 ## Docker Installation
 
-### non-GPU docker
+### Build and run
+
+#### non-GPU docker
 1. Install docker, run docker
 2. Build docker
 ```bash
@@ -63,7 +65,7 @@ Open browser and call API on port 5000
 ```
 4. Open host browser on port 5001
 
-### GPU docker
+#### GPU docker
 1. Install docker, run docker
 2. Config nvidia-docker https://github.com/NVIDIA/nvidia-docker
 3. Build docker
@@ -79,3 +81,5 @@ docker run --runtime=nvidia --rm nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04 nvid
 ./docker-gpu-run.sh 5002
 ```
 6. Open host browser on port 5002
+
+### Push images
