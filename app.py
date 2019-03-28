@@ -9,18 +9,18 @@ from src.classifier import LeftRightClassifier
 
 classifier = LeftRightClassifier()
 
-app = Flask(__name__)
-CORS(app)
+application = Flask(__name__)
+CORS(application)
 
 # default route
-@app.route('/')
+@application.route('/')
 def index():
     return "API"
 
 # HTTP Errors handlers
-@app.errorhandler(404)
+@application.errorhandler(404)
 def url_error(e):
-    return app.response_class(
+    return application.response_class(
         response= """
         Wrong URL!
         <pre>{}</pre>""".format(e),
@@ -28,9 +28,9 @@ def url_error(e):
         mimetype='html/text'
     )
 
-@app.errorhandler(500)
+@application.errorhandler(500)
 def server_error(e):
-    return app.response_class(
+    return application.response_class(
         response= """
         An internal error occurred: <pre>{}</pre>
         See logs for full stacktrace.
@@ -39,10 +39,10 @@ def server_error(e):
         mimetype='html/text'
     )
 
-@app.route('/predict', methods=['POST'])
+@application.route('/predict', methods=['POST'])
 def predict():
     if 'file' not in request.files:
-        response = app.response_class(
+        response = application.response_class(
             response= 'File are not found',
             status=400,
             mimetype='html/text'
@@ -50,7 +50,7 @@ def predict():
         return response
     file = request.files['file']
     if file.filename == '':
-        response = app.response_class(
+        response = application.response_class(
             response= 'File are not found',
             status=400,
             mimetype='html/text'
@@ -61,7 +61,7 @@ def predict():
     _, temp_filename = tempfile.mkstemp()
     file.save(temp_filename)
 
-    response = app.response_class(
+    response = application.response_class(
         response=json.dumps(classifier.predict(temp_filename)),
         status=200,
         mimetype='application/json'
@@ -69,4 +69,4 @@ def predict():
     return response
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    application.run(host='0.0.0.0', port=5000)
