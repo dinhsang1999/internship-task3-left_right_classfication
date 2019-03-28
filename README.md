@@ -41,7 +41,7 @@ gunicorn -b 0.0.0.0:8000 app
 ```
 Open browser and call API on port 8000
 - METHOD: POST
-- URL: http://localhost:5000/predict
+- URL: http://localhost:8000/predict
 - DATA:
 ```
 {
