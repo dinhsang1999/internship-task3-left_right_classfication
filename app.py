@@ -9,6 +9,8 @@ from src.classifier import LeftRightClassifier
 
 classifier = LeftRightClassifier()
 
+IMAGE_FOLDER = os.path.abspath('images')
+
 application = Flask(__name__)
 CORS(application)
 
@@ -39,30 +41,25 @@ def server_error(e):
         mimetype='html/text'
     )
 
-@application.route('/predict', methods=['POST'])
+@application.route('/fundus/left-right/predict', methods=['GET'])
 def predict():
-    if 'file' not in request.files:
-        response = application.response_class(
-            response= 'File are not found',
+    imageId = user = request.args.get('id')
+    if imageId is None:
+        return application.response_class(
+            response= 'Missing id in request',
+            status=422,
+            mimetype='html/text'
+        )
+    image_path = os.path.join(IMAGE_FOLDER, imageId)
+    if not os.path.exists(image_path):
+        return application.response_class(
+            response= 'Image not found',
             status=400,
             mimetype='html/text'
         )
-        return response
-    file = request.files['file']
-    if file.filename == '':
-        response = application.response_class(
-            response= 'File are not found',
-            status=400,
-            mimetype='html/text'
-        )
-        return response
-
-    # Store file to temp
-    _, temp_filename = tempfile.mkstemp()
-    file.save(temp_filename)
 
     response = application.response_class(
-        response=json.dumps(classifier.predict(temp_filename)),
+        response=json.dumps(classifier.predict(image_path)),
         status=200,
         mimetype='application/json'
     )
