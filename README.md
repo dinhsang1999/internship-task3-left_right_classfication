@@ -40,14 +40,10 @@ Run this command
 gunicorn -b 0.0.0.0:8000 app
 ```
 Open browser and call API on port 8000
-- METHOD: POST
-- URL: http://localhost:8000/predict
-- DATA:
-```
-{
-  "file": "<Image file>"
-}
-```
+- METHOD: GET
+- URL: http://localhost:8000/fundus/left-right/predict
+- PARAMS:
+  - `id`: image name in images folder
 
 ## Docker Installation
 
