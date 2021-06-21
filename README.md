@@ -12,29 +12,23 @@ conda activate eyeside
 Run this script to create a virtual environment and install dependency libraries
 
 ```bash
-pip3 install -r requirements.txt
-```
-or
-```bash
 pip install -r requirements.txt
+```
+
+Download model
+```bash
+bash download_model.sh
 ```
 
 ## Predict image
 Simply import the module and create a classifier object:
 ```python
-from classifier import LeftRightClassifier
+from LeftRightClassifier import LeftRightClassifier
 
-clf = LeftRightClassifier()
-```
-Predict image at `image_path` you want:
-```python
-result = clf.predict('path/to/your/image')
-```
+MODEL_PATH = 'models/fundus_lr_classifier_resnet18.pth'
+clf = LeftRightClassifier(model_path=MODEL_PATH)
 
-e.g.
-```python
-result = clf.predict('./samples/1.jpg')
-print(result)
+print(clf.predict('../samples/1.jpg'))
 ```
 
 The `result` is a dictionary with the structure:
