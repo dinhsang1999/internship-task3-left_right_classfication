@@ -3,6 +3,11 @@
 ## Requirements
 - Python >=3.5
 
+```bash
+conda create -n eyeside python=3.7
+conda activate eyeside
+```
+
 ## Setup environment
 Run this script to create a virtual environment and install dependency libraries
 
