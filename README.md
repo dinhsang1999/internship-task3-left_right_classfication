@@ -30,6 +30,13 @@ Predict image at `image_path` you want:
 ```python
 result = clf.predict('path/to/your/image')
 ```
+
+e.g.
+```python
+result = clf.predict('./samples/1.jpg')
+print(result)
+```
+
 The `result` is a dictionary with the structure:
 ```javascript
 {

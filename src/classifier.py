@@ -18,7 +18,7 @@ class LeftRightClassifier():
     Left-Right Classifier for Fundus images
 
     '''
-    def __init__(self, model_type='resnet18', using_gpu=True):
+    def __init__(self, model_type='resnet18', model_path=None, using_gpu=True):
         '''
         Load trained model
         '''
@@ -29,8 +29,12 @@ class LeftRightClassifier():
         # Convert to DataParallel and move to CPU/GPU
         self.model = nn.DataParallel(self.model).to(self.device)
         # Load trained model
-        if model_type in model_urls:
+        if model_path is not None:
+            state_dict = torch.load(model_path, map_location=self.device)
+            self.model.load_state_dict(state_dict)
+        elif model_type in model_urls: # TODO: need refining
             self.model.load_state_dict(model_zoo.load_url(model_urls[model_type], map_location=self.device))
+
         # Switch model to evaluation mode
         self.model.eval()
 

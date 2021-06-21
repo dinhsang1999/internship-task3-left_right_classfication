@@ -1,4 +1,6 @@
 from src.classifier import LeftRightClassifier
 
-clf = LeftRightClassifier()
-print(clf.predict('samples/0.png'))
+MODEL_PATH = 'models/fundus_lr_classifier_resnet18.pth'
+clf = LeftRightClassifier(model_path=MODEL_PATH)
+
+print(clf.predict('samples/1.jpg'))
