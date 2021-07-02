@@ -50,7 +50,7 @@ class LeftRightFundusClassifier():
         Predict image in image_path is left or right
         '''
         # Read image
-        if type(image_input) == 'str': # mean image path
+        if isinstance(image_input, str): # mean image path
             image = Image.open(image_input).convert('RGB')
         else: # means image PIL object # TODO: need to improve handling this, there can be case the input is neither of the case
             image = image_input

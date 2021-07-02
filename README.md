@@ -40,6 +40,11 @@ The `result` is a dictionary with the structure:
 }
 ```
 
+## Streamlit app
+```bash
+streamlit run streamlit_app.py
+```
+
 ## Flask API
 Run this command
 ```bash
