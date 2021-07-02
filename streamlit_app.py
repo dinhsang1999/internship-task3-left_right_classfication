@@ -1,12 +1,12 @@
 from pprint import pprint
-from src.classifier import LeftRightClassifier
+from src.LeftRightFundusClassifier import LeftRightFundusClassifier
 import streamlit as st
 import numpy as np
 from PIL import Image
 
 # Load model
 MODEL_PATH = 'models/fundus_lr_classifier_resnet18.pth'
-clf = LeftRightClassifier(model_path=MODEL_PATH)
+clf = LeftRightFundusClassifier(model_path=MODEL_PATH)
 
 # Render
 st.sidebar.write('#### Upload an image')

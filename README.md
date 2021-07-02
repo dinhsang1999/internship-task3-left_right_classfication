@@ -23,10 +23,10 @@ bash download_model.sh
 ## Predict image
 Simply import the module and create a classifier object:
 ```python
-from LeftRightClassifier import LeftRightClassifier
+from LeftRightFundusClassifier import LeftRightFundusClassifier
 
 MODEL_PATH = 'models/fundus_lr_classifier_resnet18.pth'
-clf = LeftRightClassifier(model_path=MODEL_PATH)
+clf = LeftRightFundusClassifier(model_path=MODEL_PATH)
 
 print(clf.predict('../samples/1.jpg'))
 ```

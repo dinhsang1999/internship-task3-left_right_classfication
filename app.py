@@ -5,9 +5,9 @@ import tempfile
 from flask_cors import CORS
 from flask import Flask, request, redirect, url_for, json
 
-from src.classifier import LeftRightClassifier
+from src.classifier import LeftRightFundusClassifier
 
-classifier = LeftRightClassifier()
+classifier = LeftRightFundusClassifier()
 
 IMAGE_FOLDER = os.path.abspath('images')
 

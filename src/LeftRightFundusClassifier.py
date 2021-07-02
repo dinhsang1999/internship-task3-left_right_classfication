@@ -13,7 +13,7 @@ model_urls = {
     "resnet18": "https://storage.googleapis.com/a2ds-models/lr_classifier/fundus_lr_classifier_resnet18-c18392c2.pth"
 }
 
-class LeftRightClassifier():
+class LeftRightFundusClassifier():
     '''
     Left-Right Classifier for Fundus images
 

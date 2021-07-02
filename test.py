@@ -1,7 +1,7 @@
 from pprint import pprint
-from src.classifier import LeftRightClassifier
+from src.classifier import LeftRightFundusClassifier
 
 MODEL_PATH = 'models/fundus_lr_classifier_resnet18.pth'
-clf = LeftRightClassifier(model_path=MODEL_PATH)
+clf = LeftRightFundusClassifier(model_path=MODEL_PATH)
 
 pprint(clf.predict('samples/1.jpg'))
