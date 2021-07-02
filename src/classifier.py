@@ -45,12 +45,15 @@ class LeftRightClassifier():
                                 transforms.ToTensor(),
                                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
 
-    def predict(self, image_path):
+    def predict(self, image_input):
         '''
         Predict image in image_path is left or right
         '''
         # Read image
-        image = Image.open(image_path).convert('RGB')
+        if type(image_input) == 'str': # mean image path
+            image = Image.open(image_input).convert('RGB')
+        else: # means image PIL object # TODO: need to improve handling this, there can be case the input is neither of the case
+            image = image_input
 
         # Transform image
         image = self.transform(image)
