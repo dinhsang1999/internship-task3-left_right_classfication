@@ -11,7 +11,7 @@ variables:
   PROJECT_PATH: "registry.gitlab.com/a2ds/ai/fundus/left-right-fundus-classification"
 
 before_script:
-  - apk update && apk add wget && apk add git
+  - apk update && apk add wget && apk add git && apk add bash
   - docker login -u $username -p $password registry.gitlab.com
 
 build:
