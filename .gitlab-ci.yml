@@ -1,6 +1,4 @@
-image: docker:19.03.12
-services:
-  - docker:19.03.12-dind
+image: debian:stable
 
 stages:
   - build
@@ -11,6 +9,8 @@ variables:
   PROJECT_PATH: "registry.gitlab.com/a2ds/ai/fundus/left-right-fundus-classification"
 
 before_script:
+  - apt-get update
+  - apt-get --yes --force-yes install wget
   - docker login -u $username -p $password registry.gitlab.com
 
 build:
