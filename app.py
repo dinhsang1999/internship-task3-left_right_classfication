@@ -5,9 +5,10 @@ import tempfile
 from flask_cors import CORS
 from flask import Flask, request, redirect, url_for, json
 
-from src.classifier import LeftRightFundusClassifier
+from src.LeftRightFundusClassifier import LeftRightFundusClassifier
 
-classifier = LeftRightFundusClassifier()
+MODEL_PATH = 'models/fundus_lr_classifier_resnet18.pth'
+clf = LeftRightFundusClassifier(model_path=MODEL_PATH)
 
 IMAGE_FOLDER = os.path.abspath('images')
 
@@ -59,7 +60,7 @@ def predict():
         )
 
     response = application.response_class(
-        response=json.dumps(classifier.predict(image_path)),
+        response=json.dumps(clf.predict(image_path)),
         status=200,
         mimetype='application/json'
     )
